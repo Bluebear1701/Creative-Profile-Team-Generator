@@ -1,10 +1,20 @@
 const inquirer = require("inquirer");
+const e = require ("")
+//prompt manager 
+// prompt list (Engineer or Intern)(menu) 
+//Would you like to add an engineer or an intern? y/n
+// if yes - which one would you like to add  employee 
+// 
+// * Add Engineer  return to menu 
+// need a confirm
+
+
 const questions = [
     {
         type: "list",
         name: "choice",
         message: "What kind of employee do you want to add?",
-        choices: ["Employee", "Intern", "Manager", "Engineer"],
+        choices:["Manager", "Engineer","Intern"],
     }
 ];
 
@@ -46,11 +56,11 @@ function createintern() {
 }
 askuser();
 
-// const employeequestions = [
+// const managerquestions = [
 //     {
 //         type: "input",
 //         name: "name",
-//         message: "What is the name of the employee?",        
+//         message: "What is the name of the manager?",        
 
 //     },
 //     {
