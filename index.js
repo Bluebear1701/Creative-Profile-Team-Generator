@@ -45,3 +45,37 @@ function createintern() {
     })
 }
 askuser();
+
+// const employeequestions = [
+//     {
+//         type: "input",
+//         name: "name",
+//         message: "What is the name of the employee?",        
+
+//     },
+//     {
+//         type: "input",
+//         name: "id",
+//         message: "What is the employee's id?",        
+//     },
+//     {
+//         type: "input",
+//         name: "email",
+//         message: "What is the employee's email address?",
+//     }
+    
+// ]
+// function askuser() {
+//     inquirer.prompt (questions).then(function(answers){
+//         console.log (answers);
+//         if (answers.choice === "Employee") {
+//             createemployee();
+//         }
+//     })
+// } 
+// function createemployee() {
+//     inquirer.prompt (employeequestions).then(function(answers){
+//         console.log (answers) 
+//     })
+// }
+// askuser();
