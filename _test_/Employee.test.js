@@ -8,21 +8,21 @@ test("creat an employee object", () => {
 });
 
 test("get the employee name", () => {
-    const employee = new Employee("Monica");
+    const employee = new Employee("Monica", "1234", "email");
     expect (employee.getName()).toEqual(expect.any(String));
 });
 
 test("get the employee id", () => {
-    const employee = new Employee("1234");
+    const employee = new Employee("Monica", "1234", "email");
     expect (employee.getId()).toEqual(expect.any(String));
 });
 
 test("get the employee email", () => {
-    const employee = new email("email");
+    const employee = new Employee("Monica", "1234", "email");
     expect (employee.getEmail()).toEqual(expect.any(String));
 });
 
 test("get the employee role", () => {
-    const employee = new Employee("role");
+    const employee = new Employee("Monica", "1234", "email");
     expect (employee.getRole()).toEqual(expect.any(String));  
 });
