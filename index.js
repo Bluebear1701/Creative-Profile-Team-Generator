@@ -2,7 +2,9 @@ const inquirer = require("inquirer");
 const Manager = require ("./lib/Manager")
 const Intern = require ("./lib/Intern");
 const Engineer = require ("./lib/Engineer")
+//an array to hold our employee questions
 const allEmployees = []
+//choices for what to do next
 const questions = [
     {
         type: "list",
@@ -11,30 +13,63 @@ const questions = [
         choices:["Engineer","Intern","Done"],
     }
 ];
-
+//questions for Intern/with validation
 const internquestions = [
     {
         type: "input",
         name: "name",
-        message: "What is the name of this Intern?",        
+        message: "What is the name of this Intern?", 
+        validate: nameInput => {
+            if (nameInput) {
+                return true;
+            } else {
+                console.log("Please enter Intern name");
+                return false;
+            }
+        }         
 
     },
     {
         type: "input",
         name: "id",
-        message: "What is the intern's id?",        
+        message: "What is the intern's id?", 
+        validate: idInput => {
+            if(idInput) {
+                return true;
+            } else {
+                console.log("Please enter Intern's id");
+                return false;
+            }
+        }       
     },
     {
         type: "input",
         name: "email",
         message: "What is the intern's email address?",
+        validate: emailInput => {
+            if (emailInput) {
+                return true; 
+            } else {
+                console.log("Please enter Intern's email");
+                return false; 
+            }
+        } 
     },
     {
         type: "input",
         name: "school",
         message: "What is the name of the intern's school?",
+        validate: schoolInput => {
+            if (schoolInput) {
+                return true; 
+            } else {
+                console.log("Please enter Intern's school name");
+                return false; 
+            }
+        } 
     }
 ]
+//questions for manager w/validation
 const managerQuestions = [
     {
         type: "input",
@@ -108,10 +143,18 @@ function creatHTML(){
     console.log (allEmployees)
 }
 function createIntern() {
-    inquirer.prompt (internquestions).then(function(answers){
+    inquirer.prompt (internQuestions).then(function(answers){
         console.log (answers) 
         const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
         allEmployees.push(intern);
+        askUser()
+    })
+}
+function createEngineer() {
+    inquirer.prompt (engineerQuestions).then(function(answers){
+        console.log (answers) 
+        const intern = new Intern(answers.name, answers.id, answers.email, answers.github)
+        allEmployees.push(engineer);
         askUser()
     })
 }
