@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 const Manager = require ("./lib/Manager")
 const Engineer = require ("./lib/Engineer");
-const Engineer = require ("./lib/Engineer")
+const Intern = require ("./lib/Intern")
 //an array to hold our employee questions
 const allEmployees = []
 //choices for what to do next
@@ -10,20 +10,20 @@ const questions = [
         type: "list",
         name: "choice",
         message: "What kind of employee do you want to add?",
-        choices:["Engineer","Engineer","Done"],
+        choices:["Engineer","Intern","Done"],
     }
 ];
-//questions for Engineer/with validation
-const engineerquestions = [
+//questions for intern/with validation
+const internQuestions = [
     {
         type: "input",
         name: "name",
-        message: "What is the name of this Engineer?", 
+        message: "What is the name of this Intern?", 
         validate: nameInput => {
             if (nameInput) {
                 return true;
             } else {
-                console.log("Please enter Engineer name");
+                console.log("Please enter Intern name");
                 return false;
             }
         }         
@@ -32,12 +32,12 @@ const engineerquestions = [
     {
         type: "input",
         name: "id",
-        message: "What is the engineer's id?", 
+        message: "What is the Intern's id?", 
         validate: idInput => {
             if(idInput) {
                 return true;
             } else {
-                console.log("Please enter Engineer's id");
+                console.log("Please enter Intern's id");
                 return false;
             }
         }       
@@ -45,12 +45,12 @@ const engineerquestions = [
     {
         type: "input",
         name: "email",
-        message: "What is the engineer's email address?",
+        message: "What is the Intern's email address?",
         validate: emailInput => {
             if (emailInput) {
                 return true; 
             } else {
-                console.log("Please enter Engineer's email");
+                console.log("Please enter Intern's email");
                 return false; 
             }
         } 
@@ -58,19 +58,19 @@ const engineerquestions = [
     {
         type: "input",
         name: "school",
-        message: "What is the name of the engineer's school?",
+        message: "What is the name of the Intern's school?",
         validate: schoolInput => {
             if (schoolInput) {
                 return true; 
             } else {
-                console.log("Please enter Engineer's school name");
+                console.log("Please enter Inter's school name");
                 return false; 
             }
         } 
     }
 ]
-
-const engineerquestions = [
+//questions for engineer w/ validation
+const engineerQuestions = [
     {
         type: "input",
         name: "name",
@@ -88,7 +88,7 @@ const engineerquestions = [
     {
         type: "input",
         name: "id",
-        message: "What is the engineer's id?", 
+        message: "What is the Engineer's id?", 
         validate: idInput => {
             if(idInput) {
                 return true;
@@ -101,7 +101,7 @@ const engineerquestions = [
     {
         type: "input",
         name: "email",
-        message: "What is the engineer's email address?",
+        message: "What is the Engineer's email address?",
         validate: emailInput => {
             if (emailInput) {
                 return true; 
@@ -114,9 +114,9 @@ const engineerquestions = [
     {
         type: "input",
         name: "GitHub",
-        message: "What is the name of the engineer's GitHub?",
-        validate: GitHubInput => {
-            if (GithubInput) {
+        message: "What is the name of the Engineer's GitHub?",
+        validate: githubInput => {
+            if (githubInput) {
                 return true; 
             } else {
                 console.log("Please enter Engineer's GitHub");
@@ -135,7 +135,7 @@ const managerQuestions = [
             if (nameInput) {
                 return true;
             } else {
-                console.log("Please enter manger name");
+                console.log("Please enter Manger name");
                 return false;
             }
         }  
@@ -148,7 +148,7 @@ const managerQuestions = [
             if(idInput) {
                 return true;
             } else {
-                console.log("Please enter manager id");
+                console.log("Please enter Manager id");
                 return false;
             }
         }
@@ -162,7 +162,7 @@ const managerQuestions = [
             if (emailInput) {
                 return true; 
             } else {
-                console.log("Please enter manager email");
+                console.log("Please enter Manager email");
                 return false; 
             }
         } 
@@ -170,12 +170,12 @@ const managerQuestions = [
     {
         type: "input",
         name: "officeNumber",
-         message: "What is this manager's office number?",  
+         message: "What is this Manager's office number?",  
          validate: officeNumberInput => {
             if (officeNumberInput) {
                 return true;
             } else {
-                console.log("Please enter manager officeNumber")
+                console.log("Please enter Manager officeNumber")
                 return false;
             }
          } 
@@ -188,8 +188,8 @@ function askUser() {
         console.log (answers);
         if (answers.choice === "Engineer") {
             createEngineer();
-        } else if (answers.choice === "Engineer") {
-            createEngineer();  
+        } else if (answers.choice === "Intern") {
+            createIntern();  
         } else if (answers.choice === "Done") {
             creatHTML();  
         }
@@ -198,16 +198,16 @@ function askUser() {
 function creatHTML(){
     console.log (allEmployees)
 }
-function createEngineer() {
-    inquirer.prompt (engineerQuestions).then(function(answers){
+function createIntern() {
+    inquirer.prompt (internQuestions) .then(function(answers){
         console.log (answers) 
-        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.school)
-        allEmployees.push(engineer);
+        const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
+        allEmployees.push(intern);
         askUser()
     })
 }
 function createEngineer() {
-    inquirer.prompt (engineerQuestions).then(function(answers){
+    inquirer.prompt (engineerQuestions) .then(function(answers){
         console.log (answers) 
         const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
         allEmployees.push(engineer);
