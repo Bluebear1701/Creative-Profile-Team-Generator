@@ -12,7 +12,7 @@ function generatehtml(allEmployees) {
   <title> Team Line-up </title>
   </head>
   <body>
-  ${employeeData()}
+  ${employeeData(allEmployees)}
   <header>
   <div>
   <h1 id="team" class="text-center">Your Team Line-up</h1>
@@ -50,9 +50,7 @@ function generateEngineer(engineer) {
         <ul class="list-group">
             <li class="list-group-item">ID: ${engineer.getId()} </li>
             <li class="list-group-item">Email:<a href = "mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
-            <li class="list-group-item">Github:[${
-              engineer.getGithub
-            }](https://github.com/${engineer.getGithub()}</li>
+            <li class="list-group-item">Github:<a href = "(https://github.com/${engineer.getGithub()}">${engineer.getGithub()}</a></li>
         </ul>
     </div>    
 </div>`;
@@ -79,13 +77,13 @@ const allEmployees = [];
 // allEmployees.push(allEmployees.filter(allEmployees.getRole() === "Engineer").map(engineer => generateEngineer(engineer)));
 // allEmployees.push(allEmployees.filter(allEmployees.getRole() === "Intern").map(intern => generateIntern(Intern)));
 function employeeData(data) {
-//   return data.map((role) => {
-//     let dataRole = role.getRole();
-//     if (dataRole === "Manager") {
-//       return generateManager(dataRole);
-//     }
-//   });
-// }
+  return data.map((role) => {
+    let dataRole = role.getRole();
+    if (dataRole === "Manager") {
+      return generateManager(dataRole);
+    }
+  });
+}
 
 
 //html setup here
