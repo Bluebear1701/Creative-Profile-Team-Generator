@@ -11,7 +11,7 @@ const questions = [
     {
         type: "list",
         name: "choice",
-        message: "What kind of employee do you want to add?",
+        message: "What kind of employee do you want to add or are you done?",
         choices:["Engineer","Intern","Done"],
     }
 ];

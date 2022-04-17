@@ -73,19 +73,20 @@ function generateIntern(intern) {
     </div>    
 </div>`;
 }
-//filters need to here
-// const allEmployees = [];
+// filters need to here
+const allEmployees = [];
 // allEmployees.push(allEmployees.filter(allEmployees.getRole() === "Manager").map(manager => generateManager(manager)));
 // allEmployees.push(allEmployees.filter(allEmployees.getRole() === "Engineer").map(engineer => generateEngineer(engineer)));
 // allEmployees.push(allEmployees.filter(allEmployees.getRole() === "Intern").map(intern => generateIntern(Intern)));
 function employeeData(data) {
-  return data.map((role) => {
-    let dataRole = role.getRole();
-    if (dataRole === "Manager") {
-      return generateManager(dataRole);
-    }
-  });
-}
+//   return data.map((role) => {
+//     let dataRole = role.getRole();
+//     if (dataRole === "Manager") {
+//       return generateManager(dataRole);
+//     }
+//   });
+// }
+
 
 //html setup here
 module.exports = generatehtml;
