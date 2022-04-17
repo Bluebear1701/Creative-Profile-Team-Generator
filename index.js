@@ -3,7 +3,7 @@ const fs = require("fs");
 const Manager = require ("./lib/Manager")
 const Engineer = require ("./lib/Engineer");
 const Intern = require ("./lib/Intern")
-const generatehtml = require("./src/generatehtml.js")
+const generateHtml = require("./src/generateHtml.js")
 //an array to hold our employee questions
 const allEmployees = []
 //choices for what to do next
@@ -233,4 +233,4 @@ const createManager = function () {
 
 };
 
-createManager();
+ createManager();
