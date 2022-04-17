@@ -3,7 +3,7 @@ const fs = require("fs");
 const Manager = require ("./lib/Manager")
 const Engineer = require ("./lib/Engineer");
 const Intern = require ("./lib/Intern")
-const generatehtml = require ("./src/generatehtml")
+const generatehtml = require("./src/generatehtml.js")
 //an array to hold our employee questions
 const allEmployees = []
 //choices for what to do next
@@ -28,8 +28,7 @@ const internQuestions = [
                 console.log("Please enter Intern name");
                 return false;
             }
-        }         
-
+        } 
     },
     {
         type: "input",
@@ -84,8 +83,7 @@ const engineerQuestions = [
                 console.log("Please enter Engineer name");
                 return false;
             }
-        }         
-
+        } 
     },
     {
         type: "input",
@@ -193,36 +191,42 @@ function askUser() {
         } else if (answers.choice === "Intern") {
             createIntern();  
         } else if (answers.choice === "Done") {
-            creatHTML();  
+            writeFile(allEmployees);  
         }
     })    
 } 
-function creatHTML(){
-    function writeToFile(allEmployees, answers) {
-        console.log(allEmployees);
-        fs.writeFileSync(allEmployees, answers);
+
+function writeFile(allEmployees) {
+    const html = generatehtml(allEmployees)
+    fs.writeFile('./dist/index.html',html, err => {
+        if (err) {
+            console.log(err);
+            return;
+        }
+    })
 }
+
 function createIntern() {
-    inquirer.prompt (internQuestions) .then(function(answers){
-        console.log (answers) 
+    inquirer.prompt (internQuestions) .then(function(answers){         
         const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
+        console.log(intern)
         allEmployees.push(intern);
         askUser()
     })
 }
 function createEngineer() {
-    inquirer.prompt (engineerQuestions) .then(function(answers){
-        console.log (answers) 
+    inquirer.prompt (engineerQuestions) .then(function(answers){         
         const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
+        console.log(engineer)
         allEmployees.push(engineer);
         askUser()
     })
 }
 
 const createManager = function () {
-     inquirer.prompt(managerQuestions) .then(function(answers){
-        console.log(answers)
+     inquirer.prompt(managerQuestions) .then(function(answers){      
         const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
+        console.log(manager)
         allEmployees.push(manager);
         askUser()
     }) 
