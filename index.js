@@ -113,7 +113,7 @@ const engineerQuestions = [
     },
     {
         type: "input",
-        name: "GitHub",
+        name: "github",
         message: "What is the name of the Engineer's GitHub?",
         validate: githubInput => {
             if (githubInput) {
