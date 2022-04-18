@@ -58,28 +58,8 @@ function generateIntern(intern) {
     </div>    
 </div>`;
 }
-// // filters need to here
-//  const allEmployees = [];
-// allEmployees.filter(allEmployees.getRole() === "Manager");
-//  //.map(manager => generateManager(manager)));
-// // allEmployees.push(allEmployees.filter(allEmployees.getRole() === "Engineer").map(engineer => generateEngineer(engineer)));
-// // allEmployees.push(allEmployees.filter(allEmployees.getRole() === "Intern").map(intern => generateIntern(Intern)));
-// // function employeeData(data) {
-//   return data.map((role) => {
-//     let dataRole = role.getRole();
-//     if (dataRole === "Manager") {
-//       return generateManager(dataRole);
-//     }
-//   });
-// //}
-// function employeeData(data) {
-//     return data.map((role) => {
-//       let dataRole = role.getRole();
-//       if (dataRole === "Engineer") {
-//         return generateEngineer(dataRole);
-//       }
-//     });
-//   }
+
+
 
  const generateHtml = function (allEmployees) {
   return `
@@ -105,7 +85,7 @@ function generateIntern(intern) {
           <div class="container">
               <div class="row justify-content-center" id="team-cards">
                   <!--Team Cards-->
-                  ${generateHTML(allEmployees)}
+                  ${generateHtml(allEmployees)}
               </div>
           </div>
       </main>
@@ -121,9 +101,9 @@ generateHTML = (data) => {
   // array for cards
   pageArray = [];
 
-  for (let i = 0; i < data.length; i++) {
-    const allEmployees = data[i];
-    const role = allEmployees.getRole();
+  for (let i = 0; i < allEmployees.length; i++) {
+    const employee = allEmployees[i];
+    const role = employee.getRole();
 
     // call manager function
     if (role === "Manager") {
