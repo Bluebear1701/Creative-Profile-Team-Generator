@@ -1,18 +1,19 @@
 const Manager = require("../lib/Manager");
 const Engineer = require("../lib/Engineer");
 const Intern = require("../lib/Intern");
+const Employee = require("../lib/Employee");
 //employees
 function generateManager(manager) {
   return `
     <div class="card employee-card">
     <div class="card-header bg-danger">
-        <h2 class="card-title"> ${manager.getNamename()}</h2>
+        <h2 class="card-title"> ${manager.name}</h2>
         <h3 class="card-title"> ${manager.role}</h3>
     </div>
     <div class="card-body">
         <ul class="list-group">
             <li class="list-group-item">ID: ${manager.id} </li>
-            <li class="list-group-item">Email:<a href = "mailto:${manager.getEmail()}">${
+            <li class="list-group-item">Email:<a href = "mailto:${manager.email}">${
     manager.email
   }</a></li>
             <li class="list-group-item">Office number: ${
@@ -27,13 +28,13 @@ function generateEngineer(engineer) {
   return `
     <div class="card employee-card">
     <div class="card-header bg-danger">
-        <h2 class="card-title"> ${engineer.getName()} </h2>
-        <h3 class="card-title"> ${engineer.getRole()}</h3>
+        <h2 class="card-title"> ${engineer.name} </h2>
+        <h3 class="card-title"> ${engineer.role}</h3>
     </div>
     <div class="card-body">
         <ul class="list-group">
-            <li class="list-group-item">ID: ${engineer.getId()} </li>
-            <li class="list-group-item">Email:<a href = "mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
+            <li class="list-group-item">ID: ${engineer.id} </li>
+            <li class="list-group-item">Email:<a href = "mailto:${engineer.email}">${engineer.email}</a></li>
             <li class="list-group-item">Github:<a href = "(https://github.com/${
               engineer.github
             }">${engineer.github}</a></li>
@@ -45,14 +46,14 @@ function generateIntern(intern) {
   return `
     <div class="card employee-card">
     <div class="card-header bg-danger">
-        <h2 class="card-title"> ${intern.getName()} </h2>
-        <h3 class="card-title"> ${intern.getRole()}</h3>
+        <h2 class="card-title"> ${intern.name} </h2>
+        <h3 class="card-title"> ${intern.role}</h3>
     </div>
     <div class="card-body">
         <ul class="list-group">
-            <li class="list-group-item">ID: ${intern.getId()} </li>
-            <li class="list-group-item">Email:<a href = "mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
-            <li class="list-group-item">School: ${intern.getschool()} </li>
+            <li class="list-group-item">ID: ${intern.id} </li>
+            <li class="list-group-item">Email:<a href = "mailto:${intern.email}">${intern.email}</a></li>
+            <li class="list-group-item">School: ${intern.school} </li>
         </ul>
     </div>    
 </div>`;
@@ -80,7 +81,7 @@ function generateIntern(intern) {
 //     });
 //   }
 
-function generateHtml(allEmployees) {
+ const generateHtml = function (allEmployees) {
   return `
   <!DOCTYPE html>
   <html lang="en">
@@ -104,7 +105,7 @@ function generateHtml(allEmployees) {
           <div class="container">
               <div class="row justify-content-center" id="team-cards">
                   <!--Team Cards-->
-                  ${allEmployees}
+                  ${generateHTML(allEmployees)}
               </div>
           </div>
       </main>
@@ -121,19 +122,19 @@ generateHTML = (data) => {
   pageArray = [];
 
   for (let i = 0; i < data.length; i++) {
-    const allEmployee = data[i];
-    const role = employee.getRole();
+    const allEmployees = data[i];
+    const role = allEmployees.getRole();
 
     // call manager function
     if (role === "Manager") {
-      const managerCard = generateManager(manager);
+      const managerCard = generateManager(allEmployees);
 
-      pageArray.push(manager);
+      pageArray.push(managerCard);
     }
 
     // call engineer function
     if (role === "Engineer") {
-      const engineerCard = generateEngineer(allEmployee);
+      const engineerCard = generateEngineer(allEmployees);
 
       pageArray.push(engineerCard);
     }
@@ -150,8 +151,9 @@ generateHTML = (data) => {
   const allEmployees = pageArray.join("");
 
   // return to generated page
-  const generateTeam = generateHtml(allEmployees);
+  const generateTeam = generateHTML(allEmployees);
   return generateTeam;
+  
 };
 
 //html setup here
