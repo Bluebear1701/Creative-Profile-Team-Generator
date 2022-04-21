@@ -142,5 +142,4 @@ module.exports = (allEmployees) => {
 // };
 
 // //html setup here
-//
-ule.exports = generateHtml;
+//module.exports = generateHtml;
