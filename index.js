@@ -198,6 +198,7 @@ function askUser() {
 
 function writeFile() {
     const html = generateHtml(allEmployees)
+    console.log(html)
     fs.writeFile('./dist/index.html',html, err => {
         if (err) {
             console.log(err);

@@ -6,11 +6,11 @@ const Employee = require("../lib/Employee");
 
 
 const generateHtml = (allEmployees) => {
-  const html =[]
+  const html = []
   //employees
   const generateManager = (manager) => {
     let managerHTML =
-     `
+      `
       <div class="card employee-card">
       <div class="card-header bg-danger">
           <h2 class="card-title"> ${manager.name}</h2>
@@ -19,19 +19,17 @@ const generateHtml = (allEmployees) => {
       <div class="card-body">
           <ul class="list-group">
               <li class="list-group-item">ID: ${manager.id} </li>
-              <li class="list-group-item">Email:<a href = "mailto:${manager.email}">${
-      manager.email
-    }</a></li>
-              <li class="list-group-item">Office number: ${
-                manager.officeNumber
-              }</li>
+              <li class="list-group-item">Email:<a href = "mailto:${manager.email}">${manager.email
+      }</a></li>
+              <li class="list-group-item">Office number: ${manager.officeNumber
+      }</li>
           </ul>
       </div>    
   </div>`;
-  html.push(managerHTML);
+    html.push(managerHTML);
   }
-  
-  const generateEngineer = (engineer) =>{
+
+  const generateEngineer = (engineer) => {
     let engineerHTML =
       `
       <div class="card employee-card">
@@ -47,11 +45,11 @@ const generateHtml = (allEmployees) => {
           </ul>
       </div>    
   </div>`;
-  html.push(engineerHTML);
+    html.push(engineerHTML);
   }
   const generateIntern = (intern) => {
     let internHTML =
-    `
+      `
       <div class="card employee-card">
       <div class="card-header bg-danger">
           <h2 class="card-title"> ${intern.name} </h2>
@@ -65,44 +63,43 @@ const generateHtml = (allEmployees) => {
           </ul>
       </div>    
   </div>`;
-  html.push(internHTML);
+    html.push(internHTML);
   }
   for (let i = 0; i < allEmployees.length; i++) {
     // const employee = allEmployees[i];
     // const role = employee.getRole();
 
-  
+
     // call manager function
-    if(allEmployees[i].getRole() === "Manager"){
+    if (allEmployees[i].getRole() === "Manager") {
       //Engineer template creation
-generateManager(allEmployees[i]);
+      generateManager(allEmployees[i]);
 
-}  
+    }
 
-if(allEmployees[i].getRole() === "Engineer"){
-  //Engineer template creation
-generateEngineer(allEmployees[i]);
-}
-  
+    if (allEmployees[i].getRole() === "Engineer") {
+      //Engineer template creation
+      generateEngineer(allEmployees[i]);
+    }
+
     // call intern function
-    if(allEmployees[i].getRole() === "Intern"){
+    if (allEmployees[i].getRole() === "Intern") {
       //Engineer template creation
-generateIntern(allEmployees[i]);
+      generateIntern(allEmployees[i]);
     }
   };
 
   // joining strings
   return html.join("")
- 
-  
+
+
   // return to generated page
   // const generateTeam = generateHTML(allEmployees);
   // return generateTeam;
-  }
-  module.exports= (allEmployees) => {
-    return 
-    `
-    <!DOCTYPE html>
+}
+module.exports = (allEmployees) => {
+  return `
+   <!DOCTYPE html>
     <html lang="en">
     <head>
     <meta charset="UTF-8">
@@ -135,14 +132,15 @@ generateIntern(allEmployees[i]);
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     </html>
   `;
-  }  
+}
 
 // generateHTML = (data) => {
 //   // array for cards
 //   pageArray = [];
 
-  
+
 // };
 
 // //html setup here
- module.exports = generateHtml;
+//
+ule.exports = generateHtml;
